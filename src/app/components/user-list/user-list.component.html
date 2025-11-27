@@ -4,7 +4,8 @@
   @for (user of _userService.getUsers(); track user.id)
   {
       <li (click)="delete(user.username)"
-        [class.weakPassword]="user.password.length < 5" >
+        [class.weakPassword]="user.password.length < 5"
+        title="delete user">
         {{ user.username }}
       </li>
   }
