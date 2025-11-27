@@ -1,0 +1,11 @@
+<h2>Registered Users</h2>
+
+<ul>
+  @for (user of _userService.getUsers(); track user.id)
+  {
+      <li (click)="delete(user.username)"
+        [class.weakPassword]="user.password.length < 5" >
+        {{ user.username }}
+      </li>
+  }
+</ul>
