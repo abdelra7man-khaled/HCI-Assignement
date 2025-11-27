@@ -8,4 +8,22 @@
   <button type="submit">Sign Up</button>
 </form>
 
-<p style="color:red;text-align: center;" *ngIf="errorMessage !== '' ">{{ errorMessage }}</p>
+@switch (errorMessage)
+{
+  @case ("user added successfully")
+  {
+    <p style="color:green;text-align: center;">{{ errorMessage }}</p>
+  }
+  @case ("Username and Password required!")
+  {
+    <p style="color:red;text-align: center;">{{ errorMessage }}</p>
+  }
+  @case ("Username already exists!")
+  {
+    <p style="color:red;text-align: center;">{{ errorMessage }}</p>
+  }
+  @case ("")
+  {
+    <p style="color:red;text-align: center;">{{ errorMessage }}</p>
+  }
+}

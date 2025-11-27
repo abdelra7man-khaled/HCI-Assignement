@@ -12,7 +12,7 @@ export class RegisterComponent {
   password: string;
   errorMessage: string;
 
-  counter: number = 1;
+  counterId: number = 1;
 
   constructor(private _userService: UserService)
   {
@@ -23,20 +23,28 @@ export class RegisterComponent {
 
   signUp()
   {
+    this.errorMessage = "";
     const isUserAdded = this._userService.addUser(
     {
-        id: this.counter++,
+        id: this.counterId++,
         username: this.username,
         password: this.password
     });
 
     if (!isUserAdded)
     {
-      this.errorMessage = "Username already exists!";
+       if(this.username === "" || this.password === "")
+       {
+          this.errorMessage = "Username and Password required!";
+       }
+       else
+       {
+          this.errorMessage = "Username already exists!";
+       }
     }
     else
     {
-      this.errorMessage = "";
+      this.errorMessage = "user added successfully";
       this.username = "";
       this.password = "";
     }

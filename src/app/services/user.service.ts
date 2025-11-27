@@ -26,6 +26,12 @@ export class UserService {
 
   addUser(newUser: User): boolean
   {
+    if(newUser.username == "" || newUser.password == "")
+      return false;
+
+    newUser.username = newUser.username.trim();
+    newUser.password = newUser.password.trim();
+
     const isUserExists = this.users.some(u => u.username === newUser.username);
     if (isUserExists) return false;
 
