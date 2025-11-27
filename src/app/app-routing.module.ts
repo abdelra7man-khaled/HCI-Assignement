@@ -5,6 +5,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'register', pathMatch: 'full' },
   {path: 'Register' , component:RegisterComponent} ,
   {path: 'UserList' , component: UserListComponent},
   {path: '*' , component: NotFoundComponent}
